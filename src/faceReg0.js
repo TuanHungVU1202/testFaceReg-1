@@ -33,7 +33,7 @@ const images = imgFiles
   // face images must be equally sized
   .map(faceImg => faceImg.resize(80,80));
 
-const isImageNine = (_, i) => imgFiles[i].includes('4');
+const isImageNine = (_, i) => imgFiles[i].includes('6');
 const isNotImageNine = (_, i) => !isImageNine(_, i);
 // use images 1 - 3 for training
 const trainImages = images.filter(isNotImageNine);

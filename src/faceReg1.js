@@ -40,7 +40,7 @@ const labels = imgFiles
 const lbph = new cv.LBPHFaceRecognizer();
 lbph.train(trainImgs, labels);
 
-const twoFacesImg = cv.imread(path.resolve(basePath, 'test1.jpg'));
+const twoFacesImg = cv.imread(path.resolve(basePath, 'test.jpg'));
 const result = classifier.detectMultiScale(twoFacesImg.bgrToGray());
 
 const minDetections = 10;
