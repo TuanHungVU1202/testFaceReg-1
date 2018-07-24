@@ -6,13 +6,13 @@ if (!cv.xmodules.face) {
   throw new Error('exiting: opencv4nodejs compiled without face module');
 }
 
-const basePath = '../imageData/face';
+const basePath = './imageData/face';
 const imgsPath = path.resolve(basePath, 'imgs');
-const nameMappings = ['hung', 'thu', 'manh'];
+const nameMappings = ['hung', 'va', 'thu'];
 
 const imgFiles = fs.readdirSync(imgsPath);
 
-const classifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_ALT2);
+const classifier = new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_ALT);
 const getFaceImage = (grayImg) => {
   const faceRects = classifier.detectMultiScale(grayImg).objects;
   if (!faceRects.length) {
@@ -31,13 +31,13 @@ const images = imgFiles
   // detect and extract face
   .map(getFaceImage)
   // face images must be equally sized
-  .map(faceImg => faceImg.resize(80, 80));
+  .map(faceImg => faceImg.resize(80,80));
 
-const isImageNine = (_, i) => imgFiles[i].includes('9');
+const isImageNine = (_, i) => imgFiles[i].includes('4');
 const isNotImageNine = (_, i) => !isImageNine(_, i);
-// use images 1 - 8 for training
+// use images 1 - 3 for training
 const trainImages = images.filter(isNotImageNine);
-// use images 9 for testing
+// use images 4 for testing
 const testImages = images.filter(isImageNine);
 // make labels
 const labels = imgFiles
