@@ -1,8 +1,8 @@
 {
-  "name": "index.js",
+  "name": "FaceReg",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/faceReg0.js",
   "dependencies": {
     "opencv4nodejs": "^4.7.1"
   },
